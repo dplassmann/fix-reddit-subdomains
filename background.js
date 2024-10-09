@@ -1,9 +1,11 @@
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
         var regex = /https?:\/\/(.*?)\.reddit.com/;
-        var subreddit = details.url.match(regex)[1];
-        if (subreddit != "www")
-            return {redirectUrl: "https://www.reddit.com/r/"+subreddit+"/"};
+        var subdomain = details.url.match(regex)[1];
+        var exceptions = ["www", "out"];
+
+        if (!exceptions.contains(subdomain))
+            return {redirectUrl: "https://www.reddit.com/r/"+subdomain+"/"};
     },
     {
         urls: [
