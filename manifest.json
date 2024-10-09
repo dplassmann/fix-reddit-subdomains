@@ -1,0 +1,12 @@
+{
+  "name": "Fix Reddit Subdomains",
+  "description": "Restore reddit behavior where subdomains linked directly to subreddits",
+  "version": "1.0",
+  "manifest_version": 2,
+  "background": {"scripts":["background.js"]},
+  "permissions": [
+    "webRequest",
+    "*://*.reddit.com/*",
+    "webRequestBlocking"
+  ]
+}
